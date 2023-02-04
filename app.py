@@ -14,4 +14,5 @@ redis = StrictRedis(host=os.environ.get('REDIS_HOST', '127.0.0.1'),
 @app.route('/')
 def hello():
     redis.incr('hits')
+    print('ok')
     return f"Hello Container World! I have been seen {redis.get('hits').decode('utf-8')} times and my hostname is {socket.gethostname()}.\n"
